@@ -1,26 +1,44 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// views
+import Home from './views/Home';
+import Signin from './views/Signin';
+import Signup from './views/Signup';
+import Ad from './views/manage/Ad';
+import Content from './views/manage/Content';
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isLoggedIn: false,
+    };
+  }
+
+  render() {
+    const { isLoggedIn } = this.state;
+    return (
+      <>
+        {isLoggedIn ? (
+          <Router>
+            <Route exact path="/" component={Home} />
+            <Route path="/manage/ad" component={Ad} />
+            <Route path="/manage/content" component={Content} />
+          </Router>
+        ) : (
+          <Router>
+            <Route exact path="/" component={Home} />
+            <Route path="/signin" component={Signin} />
+            <Route path="/signup" component={Signup} />
+          </Router>
+          )}
+      </>
+    );
+  }
 }
 
 export default App;

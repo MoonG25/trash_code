@@ -169,7 +169,7 @@ class TopBar extends Component {
               <Grid container direction="row" justify="flex-end" alignItems="center" spacing={1} className={classes.iconMenu}>
                 <Hidden xsDown>
                   <Grid item>
-                    <Button className={classes.loginBtn} variant="contained" onClick={this.handleClickLogin}>
+                    <Button className={classes.loginBtn} variant="contained" onClick={() => this.props.history.push('/signin')}>
                       로그인
                     </Button>
                   </Grid>

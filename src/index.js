@@ -4,10 +4,32 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+import { enableLogging } from 'mobx-logger';
+import { configure } from 'mobx';
+import { Provider as MobxProvider } from 'mobx-react';
+import { ThemeProvider } from '@material-ui/core/styles';
+import { SnackbarProvider } from 'notistack';
+import { stores } from './stores';
+
+configure({ enforceActions: 'always' });
+
+const config = {
+
+};
+
+enableLogging(config);
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <MobxProvider {...stores}>
+    <SnackbarProvider maxSnack={3} anchorOrigin={{
+      vertical: 'bottom',
+      horizontal: 'right',
+    }}>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </SnackbarProvider>
+  </MobxProvider>,
   document.getElementById('root')
 );
 

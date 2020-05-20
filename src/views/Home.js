@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 
+import { inject, observer } from 'mobx-react';
+
+@inject('authStore')
+@observer
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -8,8 +12,9 @@ class Home extends Component {
   }
 
   render () {
+    const { isLoggedIn } = this.props.authStore;
     return (
-      <div>Home</div>
+      <div>Home {this.props.userId}</div>
     )
   }
 }

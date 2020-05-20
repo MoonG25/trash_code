@@ -1,6 +1,14 @@
 /* config-overrides.js */
+const {
+  override,
+  addDecoratorsLegacy,
+  disableEsLint,
+} = require('customize-cra');
 
-module.exports = function override(config, env) {
-  //do stuff with the webpack config...
-  return config;
-}
+module.exports = override(
+  // enable legacy decorators babel plugin
+  addDecoratorsLegacy(),
+
+  // disable eslint in webpack
+  disableEsLint()
+);

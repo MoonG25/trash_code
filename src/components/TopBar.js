@@ -54,7 +54,7 @@ const useStyles = {
     [theme.breakpoints.down('xs')]: {
       order: 1,
       justifyContent: 'flex-start',
-      width: 'auth',
+      width: 'auto',
     },
   },
   link: {
